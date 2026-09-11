@@ -1,19 +1,23 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kumar-github/sdkkeeper/releases/download/v0.1.1/sdkkeeper_0.1.1_windows_amd64.zip",
+            "url": "https://github.com/kumar-github/sdkkeeper/releases/download/v0.1.2/sdkkeeper_0.1.2_windows_amd64.zip",
             "bin": [
                 "sk.exe"
             ],
-            "hash": "f9dca9d7ac9e7bebffe1e3688f24c92f371cb4c5294dfc1747e067243f665264"
+            "hash": "8250d785619a6943efd16e4df4cd46a566125efbc165de4f1fbc1c9e537494ad"
         }
     },
     "homepage": "https://github.com/kumar-github/sdkkeeper",
     "description": "SDK Keeper -- explicit, no-default SDK version manager",
     "post_install": [
         "Write-Host \"\"",
-        "Write-Host \"SDK Keeper is installed. The command is sk (not sdkkeeper) -- and it needs one more step to actually work in PowerShell:\"",
+        "Write-Host \"SDK Keeper is installed. The command is sk (not sdkkeeper).\"",
+        "Write-Host \"\"",
+        "Write-Host \"== Setup ==\"",
+        "Write-Host \"Run this once to add sk to your PowerShell profile:\"",
+        "Write-Host \"\"",
         "Write-Host \"  sk init powershell | Out-File -Append $PROFILE\"",
         "Write-Host \"\"",
         "Write-Host \"Then restart PowerShell (or run: . $PROFILE)\""
