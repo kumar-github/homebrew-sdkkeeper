@@ -2,25 +2,25 @@
 cask "sdkkeeper" do
   name "SDK Keeper"
 
-  version "0.1.1"
+  version "0.1.2"
 
   on_macos do
     on_arm do
-      sha256 "9ef20ffebb0959372936163a71809ccd97e804e4748d100003ee4e28a92f28d6"
+      sha256 "ede4c349cf79f08adda0660494c8384e89439d3381536307f200428c34f6779f"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "902265919350aac09fc505451d89b43385180631892fb467498cf46891c87bec"
+      sha256 "5b91f3cc02791891dbd60cc5283ffcb7c94ee4c55030700fc70dbf9d53415012"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "ff31d2ac3b32b4957f0f9105b787f311cc58ea1dbcb81e1ad73a494768a83b6d"
+      sha256 "082a99f44aff31cbab6333ea3f5691140ad05dd0b4f912aef5c07eefefba2360"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "8357383cafd5d90aeb2289c9f1533502aca009770abc9bf0e7de0574008868dd"
+      sha256 "4f406dbbf4cf55b53619664130f12f2595a0aeb72333379b570b3dccccf2a088"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -43,20 +43,28 @@ cask "sdkkeeper" do
 
   uninstall_postflight do
     system_command "/bin/echo", args: ["SDK Keeper has been removed."]
-    system_command "/bin/echo", args: ["If you added the shell integration line to ~/.zshrc, you may want to remove it too:"]
-    system_command "/bin/echo", args: ["  sed -i '' '/eval.*sk init zsh/d' ~/.zshrc"]
+    system_command "/bin/echo", args: ["If you added the shell integration line to your shell config file, you may want to remove it too."]
+    system_command "/bin/echo", args: ["If you forget, your next new shell will show something like:"]
+    system_command "/bin/echo", args: ["  .zshrc:LINE: command not found: sk"]
+    system_command "/bin/echo", args: ["That error is the sign -- go remove the block."]
   end
 
   # No zap stanza required
 
   caveats <<~EOS
-    SDK Keeper is installed. The command is `sk` (not sdkkeeper) -- and it needs one more step to actually work in your shell:
+    SDK Keeper is installed. The command is `sk` (not sdkkeeper).
 
-      echo 'command -v sk >/dev/null && eval "$(sk init zsh)"' >> ~/.zshrc
+    == Setup ==
+    Add this to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup). Add it at the end of the file, or next to any similar init lines you already have (e.g. if you use starship, right next to its own init line is a good spot):
 
-    Then restart your shell (or run: source ~/.zshrc)
+      # -------------------------------------------------------------------------------------------
+      # ---------------------------------------- SDK Keeper ---------------------------------------
+      # -------------------------------------------------------------------------------------------
+      eval "$(sk init zsh)"
 
-    If you ever uninstall SDK Keeper, remove that line from ~/.zshrc too:
-      sed -i '' '/eval.*sk init zsh/d' ~/.zshrc
+    Then restart your shell (or re-source whichever file you added it to -- again, that may not be ~/.zshrc).
+
+    == Cleanup ==
+    Remove that same block when uninstalling SDK Keeper.
   EOS
 end
