@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kumar-github/sdkkeeper/releases/download/v0.1.0/sdkkeeper_0.1.0_windows_amd64.zip",
+            "bin": [
+                "sk.exe"
+            ],
+            "hash": "cd621b16ea94acd37f2a0d933093b30af1701f6e432bc449f5f20ea2c2b4efe4"
+        }
+    },
+    "homepage": "https://github.com/kumar-github/sdkkeeper",
+    "description": "SDK Keeper -- explicit, no-default SDK version manager"
+}
