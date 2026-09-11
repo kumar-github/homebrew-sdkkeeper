@@ -2,25 +2,25 @@
 cask "sdkkeeper" do
   name "SDK Keeper"
 
-  version "0.1.2"
+  version "0.1.3"
 
   on_macos do
     on_arm do
-      sha256 "ede4c349cf79f08adda0660494c8384e89439d3381536307f200428c34f6779f"
+      sha256 "edd0796bd4e07d7c335e05b6794f84a76194756f4337a81917b44567130ec3dc"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "5b91f3cc02791891dbd60cc5283ffcb7c94ee4c55030700fc70dbf9d53415012"
+      sha256 "50f14f164404189fedee67468e6e04a2b6e85194ecee6adb0393ebb3530bce44"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "082a99f44aff31cbab6333ea3f5691140ad05dd0b4f912aef5c07eefefba2360"
+      sha256 "50baa47f0eb209baed238b2965fd2ab30662360f517c9a255efc505a2e8c1c4b"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "4f406dbbf4cf55b53619664130f12f2595a0aeb72333379b570b3dccccf2a088"
+      sha256 "36abc949ba83d458f72ef6c97c71bcb00357918f7fedf3b9c26e6a04efb19af5"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -54,17 +54,21 @@ cask "sdkkeeper" do
   caveats <<~EOS
     SDK Keeper is installed. The command is `sk` (not sdkkeeper).
 
-    == Setup ==
-    Add this to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup). Add it at the end of the file, or next to any similar init lines you already have (e.g. if you use starship, right next to its own init line is a good spot):
+    === Setup ===
 
-      # -------------------------------------------------------------------------------------------
-      # ---------------------------------------- SDK Keeper ---------------------------------------
-      # -------------------------------------------------------------------------------------------
-      eval "$(sk init zsh)"
+    Add this to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup).
+    Add it at the end of the file, or next to any similar init lines you already have.
+    Example: If you use starship, right next to its own init line is a good spot.
+
+    # -------------------------------------------------------------------------------------------
+    # ---------------------------------------- SDK Keeper ---------------------------------------
+    # -------------------------------------------------------------------------------------------
+    eval "$(sk init zsh)"
 
     Then restart your shell (or re-source whichever file you added it to -- again, that may not be ~/.zshrc).
 
-    == Cleanup ==
+    === Cleanup ===
+
     Remove that same block when uninstalling SDK Keeper.
   EOS
 end
