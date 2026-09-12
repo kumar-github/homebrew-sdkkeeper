@@ -2,25 +2,25 @@
 cask "sdkkeeper" do
   name "SDK Keeper"
 
-  version "0.1.4"
+  version "0.1.5"
 
   on_macos do
     on_arm do
-      sha256 "4e0077ae635e204c5118bd6f7b8ba29f84b5a865a893671e34c2661bf8c20f81"
+      sha256 "f27d7a724374a54630ee39d20eda8a1e76d15e5491acc4797a4765550d94863c"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "135415e1e49cd37ad2444a414821508b90c9f83052557020f2f4d5f684b79980"
+      sha256 "4efd8409d5fe421663857703ace8c97dda54c9140fcaa87609f470648cde11c0"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "369c57b56c7e75c5b40454d7938046ac34852b5f4a5ce95d17dcf7f776fda4c6"
+      sha256 "ce1ad44bd3eb99bb03f1fbb6733f46a05819dabc65bf99060bd6198738d487fc"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "24c494bb716a18ff28ad2b17fce2557ad2dbcc03a06cc464f295976139fac35f"
+      sha256 "42709ffc6df4ad3d577a5572c11168bd785887c15bb2be938714023d352f4acb"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -56,13 +56,10 @@ cask "sdkkeeper" do
 
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Setup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    Add this to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup).
+    Add the below one line config to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup).
     Add it at the end of the file, or next to any similar init lines you already have.
-    Example: Below is the example of mine added at the end of the .zshrc file with comments for the future myself
 
-      # -----------------------------------------------------------------------------------------
-      # --------------------------------------- SDK Keeper --------------------------------------
-      # -----------------------------------------------------------------------------------------
+      # SDK Keeper
       eval "$(sk init zsh)"
 
     Then restart your shell (or re-source whichever file you added it to -- again, that may not be ~/.zshrc).
