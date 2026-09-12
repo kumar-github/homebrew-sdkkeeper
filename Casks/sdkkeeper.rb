@@ -2,25 +2,25 @@
 cask "sdkkeeper" do
   name "SDK Keeper"
 
-  version "0.1.5"
+  version "0.1.6"
 
   on_macos do
     on_arm do
-      sha256 "f27d7a724374a54630ee39d20eda8a1e76d15e5491acc4797a4765550d94863c"
+      sha256 "3b4ba8a1af9758fb32cbba5edc30890faa03911b5662a8999b5fe84da4cd78ad"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "4efd8409d5fe421663857703ace8c97dda54c9140fcaa87609f470648cde11c0"
+      sha256 "fe14b554da25b96f6a8c4ccafc355b5e723c034887fcc117c7c6b54ae6901ce2"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "ce1ad44bd3eb99bb03f1fbb6733f46a05819dabc65bf99060bd6198738d487fc"
+      sha256 "966d78ce584c1803307d8e4e38b1327b2cc05c8502300233d140473f55f4d545"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "42709ffc6df4ad3d577a5572c11168bd785887c15bb2be938714023d352f4acb"
+      sha256 "a9ae8c83f3afa557091e38b82c45fe6984fa116eca4219e08c1773ec139cfeeb"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -42,11 +42,11 @@ cask "sdkkeeper" do
   end
 
   uninstall_postflight do
-    system_command "/bin/echo", args: ["SDK Keeper has been removed."]
-    system_command "/bin/echo", args: ["If you added the shell integration line to your shell config file, you may want to remove it too."]
-    system_command "/bin/echo", args: ["If you forget, your next new shell will show something like:"]
-    system_command "/bin/echo", args: ["  .zshrc:LINE: command not found: sk"]
-    system_command "/bin/echo", args: ["That error is the sign -- go remove the block."]
+    system_command "/bin/echo", args: ["SDK Keeper has been removed."], print_stdout: true
+    system_command "/bin/echo", args: ["If you added the shell integration line to your shell config file, you may want to remove it too."], print_stdout: true
+    system_command "/bin/echo", args: ["If you forget, your next new shell will show something like:"], print_stdout: true
+    system_command "/bin/echo", args: ["  .zshrc:LINE: command not found: sk"], print_stdout: true
+    system_command "/bin/echo", args: ["That error is the sign -- go remove the block."], print_stdout: true
   end
 
   # No zap stanza required
