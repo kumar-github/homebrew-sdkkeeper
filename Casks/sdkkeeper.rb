@@ -35,13 +35,13 @@ cask "sdkkeeper" do
 
   binary "sk"
 
-  postflight do
+  postflight_steps do
     if OS.mac?
       system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/sk"]
     end
   end
 
-  uninstall_postflight do
+  uninstall_postflight_steps do
     system_command "/bin/echo", args: ["SDK Keeper has been removed."]
     system_command "/bin/echo", args: ["If you added the shell integration line to your shell config file, you may want to remove it too."]
     system_command "/bin/echo", args: ["If you forget, your next new shell will show something like:"]
