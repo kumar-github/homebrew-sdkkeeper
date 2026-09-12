@@ -59,8 +59,7 @@ cask "sdkkeeper" do
     
     Add this to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup).
     Add it at the end of the file, or next to any similar init lines you already have.
-    Example: If you use starship, right next to its own init line is a good spot.
-    Note: Below is the example of mine with comments for the future myself
+    Example: Below is the example of mine added at the end of the .zshrc file with comments for the future myself
 
       # ---------------------------------------------------------------------------------------------
       # ----------------------------------------- SDK Keeper ----------------------------------------
