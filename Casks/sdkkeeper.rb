@@ -3,9 +3,8 @@ cask "sdkkeeper" do
   name "SDK Keeper"
 
   caveats do
-    # zdotdir = ENV["ZDOTDIR"].to_s.empty? ? ENV["HOME"] : ENV["ZDOTDIR"]
-    # zshrc_path = "#{zdotdir}/.zshrc"
     zshrc_path = `zsh -c 'print -r -- "${ZDOTDIR:-$HOME}/.zshrc"' 2>/dev/null`.strip
+    zshrc_path = File.join(ENV["HOME"], ".zshrc") if zshrc_path.empty?
     <<~EOS
       SDK Keeper is installed. The command is `sk` (not sdkkeeper).
 
@@ -34,25 +33,25 @@ cask "sdkkeeper" do
     EOS
   end
 
-  version "0.1.10"
+  version "0.1.11"
 
   on_macos do
     on_arm do
-      sha256 "6986a305a3d63d1d403efbe2e16aefb62ba15ce1019441201969d542657feedf"
+      sha256 "80a0a83eb4cc3fefe034f630f32708ad369bee6018620ebf0108e0058c0d49a5"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "a20779a948854a1fd56b4e111c2b51d5f0df344cab7e1851a624dca6b3293cde"
+      sha256 "1df49336c646d04d2bcb82bafcf09ac2eb2c844eb533654339ff86edd627f9f7"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "9c9269b57d4fd8c9fc4843c2318d93599f2746b92c9a3bd4383516638fe49d87"
+      sha256 "de47b5b07778b16828228f3476bf6a33a239143ad747a01b34543dac61a1c900"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "0ecd5ba4cb6cb12ae0ef11a29a9ed4d5d198f730a66f8db90af0d87b62f7d4c6"
+      sha256 "abedad9d02c3a82c15b974deb2e9abca830fdf5b5a06b1094a2fbe2aa40d1cf8"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
