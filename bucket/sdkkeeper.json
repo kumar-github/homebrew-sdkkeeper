@@ -1,12 +1,12 @@
 {
-    "version": "0.1.11",
+    "version": "0.1.12",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kumar-github/sdkkeeper/releases/download/v0.1.11/sdkkeeper_0.1.11_windows_amd64.zip",
+            "url": "https://github.com/kumar-github/sdkkeeper/releases/download/v0.1.12/sdkkeeper_0.1.12_windows_amd64.zip",
             "bin": [
                 "sk.exe"
             ],
-            "hash": "240b23b80f8260b8f2aba91fec37007daa8ba10d7d98aaa763ba6c6cec15b962"
+            "hash": "e8e4dcabe89bcbea8741eb338e080c303c1bd01fd1c418cbcf26af797ebb5e74"
         }
     },
     "homepage": "https://github.com/kumar-github/sdkkeeper",
