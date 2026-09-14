@@ -2,25 +2,56 @@
 cask "sdkkeeper" do
   name "SDK Keeper"
 
-  version "0.1.6"
+  caveats do
+    zdotdir = ENV["ZDOTDIR"].to_s.empty? ? ENV["HOME"] : ENV["ZDOTDIR"]
+    zshrc_path = "#{zdotdir}/.zshrc"
+    <<~EOS
+      SDK Keeper is installed. The command is `sk` (not sdkkeeper).
+
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Setup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      Add the below one line config at the end of your shell config file (#{zshrc_path}).
+
+        # SDK Keeper
+        eval "$(sk init zsh)"
+
+      Then restart your shell (or re-source that same file).
+
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Usage ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      Just type `sk` and hit enter. You will know what to do next.
+
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Cleanup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      1. Remove the below lines from #{zshrc_path} after uninstalling SDK Keeper.
+
+        # SDK Keeper
+        eval "$(sk init zsh)"
+
+      2. Delete the hidden `.sdkkeeper` folder from the user home directory (~).
+      Note: This is where all the downloaded JDKs and SDKs are stored and deleting them is permanant. You can keep them if you want to use later.
+    EOS
+  end
+
+  version "0.1.7"
 
   on_macos do
     on_arm do
-      sha256 "3b4ba8a1af9758fb32cbba5edc30890faa03911b5662a8999b5fe84da4cd78ad"
+      sha256 "b88d9d7440666fb73848f94307f166e97ae3af36a3bd47da6efc70f194651a9f"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "fe14b554da25b96f6a8c4ccafc355b5e723c034887fcc117c7c6b54ae6901ce2"
+      sha256 "84e9901e12252135d2042dd0e5b50e8af00d595ad7ba927086d8402ca5774f13"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "966d78ce584c1803307d8e4e38b1327b2cc05c8502300233d140473f55f4d545"
+      sha256 "2f16a130bbd6a3c4e2778af18ff1c570a594c91dd208c8c1401d16e43bb79474"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "a9ae8c83f3afa557091e38b82c45fe6984fa116eca4219e08c1773ec139cfeeb"
+      sha256 "f5e4ec5d278c9d1b6e3d73a598b29606d380c8a8b3bf98f4b23cf5443caa11e2"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -41,31 +72,5 @@ cask "sdkkeeper" do
     end
   end
 
-  uninstall_postflight do
-    system_command "/bin/echo", args: ["SDK Keeper has been removed."], print_stdout: true
-    system_command "/bin/echo", args: ["If you added the shell integration line to your shell config file, you may want to remove it too."], print_stdout: true
-    system_command "/bin/echo", args: ["If you forget, your next new shell will show something like:"], print_stdout: true
-    system_command "/bin/echo", args: ["  .zshrc:LINE: command not found: sk"], print_stdout: true
-    system_command "/bin/echo", args: ["That error is the sign -- go remove the block."], print_stdout: true
-  end
-
   # No zap stanza required
-
-  caveats <<~EOS
-    SDK Keeper is installed. The command is `sk` (not sdkkeeper).
-
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Setup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    Add the below one line config to your shell config file (usually ~/.zshrc, but yours may live elsewhere -- e.g. inside a dotfiles setup).
-    Add it at the end of the file, or next to any similar init lines you already have.
-
-      # SDK Keeper
-      eval "$(sk init zsh)"
-
-    Then restart your shell (or re-source whichever file you added it to -- again, that may not be ~/.zshrc).
-
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Cleanup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    Remove that same block when uninstalling SDK Keeper.
-  EOS
 end
