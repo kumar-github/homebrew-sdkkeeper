@@ -11,7 +11,7 @@ cask "sdkkeeper" do
 
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Setup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      Add the below one line config at the end of your shell config file (#{zshrc_path}).
+      Add the below block at the end of your shell config file (#{zshrc_path}).
 
         # SDK Keeper
         eval "$(sk init zsh)"
@@ -24,35 +24,35 @@ cask "sdkkeeper" do
 
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Cleanup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      1. Remove the below lines from #{zshrc_path} after uninstalling SDK Keeper.
+      1. Remove the below block from your shell config file (#{zshrc_path}) after uninstalling SDK Keeper.
 
         # SDK Keeper
         eval "$(sk init zsh)"
 
-      2. Delete the hidden `.sdkkeeper` folder from the user home directory (~).
-      Note: This is where all the downloaded JDKs and SDKs are stored and deleting them is permanant. You can keep them if you want to use later.
+      2. Delete the hidden `.sdkkeeper` folder from the user home directory (typically ~/.sdkkeeper).
+      Note: This is where all the downloaded JDKs and SDKs are stored and deleting them is permanant. You can keep them if you want to use them later.
     EOS
   end
 
-  version "0.1.9"
+  version "0.1.10"
 
   on_macos do
     on_arm do
-      sha256 "48c49fa31263e338d7cf7dc3b3173b936152688d03da01e3ef80b3d484aaea43"
+      sha256 "6986a305a3d63d1d403efbe2e16aefb62ba15ce1019441201969d542657feedf"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "cfcde2ab8440b52a8ccc6d0c77218d4890e7758d19d4b2d3ef85eada2f22c8c3"
+      sha256 "a20779a948854a1fd56b4e111c2b51d5f0df344cab7e1851a624dca6b3293cde"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "4e1f9b9695e897bf47281a2cd9376588a83d437f49fa9b177dfd0c158e88147b"
+      sha256 "9c9269b57d4fd8c9fc4843c2318d93599f2746b92c9a3bd4383516638fe49d87"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "c13dd913b009748f14664e7bb2214d25094cd029029c8840a870d876333b4602"
+      sha256 "0ecd5ba4cb6cb12ae0ef11a29a9ed4d5d198f730a66f8db90af0d87b62f7d4c6"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
