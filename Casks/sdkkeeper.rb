@@ -11,11 +11,13 @@ cask "sdkkeeper" do
   caveats do
     zshrc_path = `zsh -c 'print -r -- "${ZDOTDIR:-$HOME}/.zshrc"' 2>/dev/null`.strip
     zshrc_path = File.join(ENV["HOME"], ".zshrc") if zshrc_path.empty?
+
     <<~EOS
       SDK Keeper is installed. The command is `sk` (not sdkkeeper).
 
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Setup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+      zsh:
       Add the below block at the end of your shell config file (#{zshrc_path}).
 
         # SDK Keeper
@@ -23,41 +25,54 @@ cask "sdkkeeper" do
 
       Then restart your shell (or re-source that same file).
 
+      Nushell:
+      Run the below line once.
+
+        sk init nu | save -f ($nu.data-dir | path join "vendor/autoload/sk.nu")
+
+      Then restart Nushell.
+
+      Note: Nushell auto-loads any script placed in its `vendor/autoload` directory at startup, so no config file edit is needed.
+
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Usage ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
       Just type `sk` and hit enter. You will know what to do next.
 
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Cleanup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      1. Remove the below block from your shell config file (#{zshrc_path}) after uninstalling SDK Keeper.
+      1. zsh: remove the below block from your shell config file (#{zshrc_path}) after uninstalling SDK Keeper.
 
         # SDK Keeper
         eval "$(sk init zsh)"
+
+      Nushell: delete the autoload script.
+
+        rm ($nu.data-dir | path join "vendor/autoload/sk.nu")
 
       2. Delete the hidden `.sdkkeeper` folder from the user home directory (typically ~/.sdkkeeper).
       Note: This is where all the downloaded JDKs and SDKs are stored and deleting them is permanant. You can keep them if you want to use them later.
     EOS
   end
 
-  version "0.3.0"
+  version "0.3.1"
 
   on_macos do
     on_arm do
-      sha256 "b4628b5cf1d7be011f34565180b846565cbd2be164c70725a057bcce5f749090"
+      sha256 "7a49a7cab9352a737520be6dd68b4e02250984cd6ac06eedc9b47d5917aca2ca"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "2f84da71f7042c744622236f3c23e59a9855b5630820085622a387434bc70c8b"
+      sha256 "d9fbcb599f30b8080e2d8010a51801f0705e8832f9ec949e7f1fb889b293980e"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "65495366fd82081739635a128df629e3be6b921285813385a11705cd445ad346"
+      sha256 "e0c2684d81da0170fbca48639d5e7525d8187919100120ef22bc41fc0d71b7c4"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "99cd3276350c46a80402a1fcd8cbaac67a1a08eac3672f13660e8326fe570235"
+      sha256 "321dba4d44546d0d6fcc87f726ded1656e88425068dc7b3e5ca560b3cd86faa0"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
