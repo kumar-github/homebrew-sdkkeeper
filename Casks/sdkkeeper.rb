@@ -28,7 +28,7 @@ cask "sdkkeeper" do
       Nushell:
       Run the below line once.
 
-        sk init nu | save -f ($nu.data-dir | path join "vendor/autoload/sk.nu")
+        $ sk init nu | save -f ($nu.data-dir | path join "vendor/autoload/sk.nu")
 
       Then restart Nushell.
 
@@ -47,32 +47,35 @@ cask "sdkkeeper" do
 
       Nushell: delete the autoload script.
 
-        rm ($nu.data-dir | path join "vendor/autoload/sk.nu")
+        $ rm ($nu.data-dir | path join "vendor/autoload/sk.nu")
 
       2. Delete the hidden `.sdkkeeper` folder from the user home directory (typically ~/.sdkkeeper).
+
+        $ rm -rf ~/.sdkkeeper
+
       Note: This is where all the downloaded JDKs and SDKs are stored and deleting them is permanant. You can keep them if you want to use them later.
     EOS
   end
 
-  version "0.3.1"
+  version "0.3.2"
 
   on_macos do
     on_arm do
-      sha256 "7a49a7cab9352a737520be6dd68b4e02250984cd6ac06eedc9b47d5917aca2ca"
+      sha256 "150799dedd3a38da7f8908f82147a994970c0d80f530d17c679d86aa8b286b57"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "d9fbcb599f30b8080e2d8010a51801f0705e8832f9ec949e7f1fb889b293980e"
+      sha256 "50a4bf5af7b1c3827d0204995bfde5d02735c4e55ecf2eef97232caa82b7ec38"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "e0c2684d81da0170fbca48639d5e7525d8187919100120ef22bc41fc0d71b7c4"
+      sha256 "85f95fbd7af0c7c9945f823621d68783ec92171ad78fcbe73ab311f6998dffa8"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "321dba4d44546d0d6fcc87f726ded1656e88425068dc7b3e5ca560b3cd86faa0"
+      sha256 "a40b6f9381fca460da6559d0e31a4290e3d147dbd2b9d743bfdb692a744840de"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
