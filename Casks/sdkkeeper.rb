@@ -57,25 +57,25 @@ cask "sdkkeeper" do
     EOS
   end
 
-  version "0.3.7"
+  version "0.3.8"
 
   on_macos do
     on_arm do
-      sha256 "6f12bd7c7bcd39f10700ea3107ab99ded8857a96f9a406355c4c081720504f40"
+      sha256 "5cb5a3e02d8366dcb98d4c37a82fcb06928b1644402d70b95ab8805eea19c62c"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "e03c9482bc8806b46c0e8f59a31f289780464e9f36af99913f94e4cefd6fbbb0"
+      sha256 "4c513e0458baca94a74357d4b91a84bdaf8879c12a4aa8af4993a07f019696a2"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "2540f38577351ab3bbf5ad60f54e7b7aa79db375b42939d4e0a95caeb8e60b1f"
+      sha256 "94dd2a735da6bbcbd857926dac5e3a86a9531af5a897327c0066542ffb28fde1"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "91018bad727af1a4a1494a993a38471449508a0331b1966ff06c9ba4c6a122ee"
+      sha256 "090a040d978c212ed15de6f30087061d7c531b65d17cbd460cee22b1c880fe67"
       url "https://github.com/kumar-github/sdkkeeper/releases/download/v#{version}/sdkkeeper_#{version}_linux_amd64.tar.gz"
     end
   end
